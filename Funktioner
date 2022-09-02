@@ -1,0 +1,18 @@
+#FUNKTIONER
+
+
+################################################################################
+#Skapar funktion för histogram över teoretisk fördelning
+hist_theoretical <- function(samp,dist,...) {
+  h <- hist(samp , plot=FALSE) #generate hist
+  plot(h, col="grey") #plot hist
+  xlines <-seq(min(h$breaks),max(h$breaks),length.out=100) #seq of manuell_chisq for pdf
+  lines(x = xlines,y=dist(xlines,...) *length(samp )*diff(h$breaks)[1])
+}
+
+# Exempelkod:
+#sampchisq <- rchisq(100,30)
+#hist_theoretical(samp=sampchisq, dist=dchisq,df=30)
+
+################################################################################
+################################################################################
